@@ -1,3 +1,4 @@
+//CSRFToken 
 function getCookie(name) {
 	var cookieValue = null;
 	if(document.cookie && document.cookie !== '') {
@@ -109,7 +110,7 @@ $('document').ready(function() {
 		var csrftoken = getCookie('csrftoken');
 		var username = 'yu';
 		var password = 'aaaaaa';
-		url='/Demo/post';
+		url='/Demo/post';//相对于网站根路径
 		$.ajax({
 			cache: false,
 			type: "POST",
@@ -145,11 +146,12 @@ $('document').ready(function() {
 			content:content,
 			title:title
 		}
-		url='/Demo/savenews';
+		url='savenews';//相对于项目根路径
 		$.ajax({
 			cache:false,
 			type:'POST',
 			url:url,
+			ranNum:Math.random(),
 			dataType:'json',
 			async:true,
 			data:data,
