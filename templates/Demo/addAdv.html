@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新建广告条目</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+    <script src="../../static/js/addAdv.js"></script>
+</head>
+<body>
+	<div id="adv-title">
+		新增的广告标题
+	</div>
+	<div id='adv-content'>
+		<form action="addAdv/newAdv" method="post" name="adv-submit" >
+			<p>姓名:<input type="text" name="name"/></p>
+			<p>编号:<input type="text" name="code"/></p>
+			<p>广告内容:<input type="text" name="content"/></p>
+			<p>招商电话:<input type="tel" name="tel"/></p>
+			<p>Email:<input type="email" name="email"></p>
+			<input type="submit" name="save" value="保存" />
+		</form>
+	</div>
+	
+
+</body>
+</html>
