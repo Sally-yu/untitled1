@@ -8,6 +8,7 @@ margin: 0px;
 padding: 0px;
 border: 0px;
 font-size: 0;
+font-family:"microsoft yahei";
 }
 
 
@@ -22,7 +23,7 @@ body{
 
 #navi-div{
 	height: 140px;
-	background-color: #1E88E5;
+	background-color:dodgerblue;
 }
 
 #navi-menu{
@@ -35,7 +36,6 @@ body{
 	/*height: 60px;*/
 	margin: 0 auto; 
 	
-	background-color:#D0E5F2;
 }
 
 #center-menu>div{
@@ -43,14 +43,6 @@ body{
 	/*height: 60px;*/
 	width: 150px;
 	text-align: center;
-}
-#center-menu>div>ul{
-	display: block;
-	list-style: none;
-	position: absolute;
-	width: 150px;
-	rota
-	/*height: 60px;*/
 }
 
 #center-menu>div>a{
@@ -63,12 +55,47 @@ body{
 .active-div,
 #center-menu>div:hover
 {
-		background-color: #C24F4A;
+		color: white;
+		background-color: dodgerblue;
+}
+
+#center-menu>div:hover .navi-ul{
+	transform: rotateX(0deg);
+	-moz-transform: rotateX(0deg);
+	-webkit-transform: rotateX(0deg);
+	-ms-transform: rotateX(0deg);
+}
+
+.navi-ul{
+	display: block;
+	list-style: none;
+	position: absolute;
+	width: 150px;
+	transform: rotateX(90deg);
+	-moz-transform: rotateX(90deg);
+	-webkit-transform: rotateX(90deg);
+	-ms-transform: rotateX(90deg);
 }
 
 .navi-ul>li{
 	display: block;
 	font-size: 20px;
-	background-color: #C24F4A;
+	color: white;
+	background-color: dodgerblue;
 }
 
+#content-section{
+	background:whitesmoke;
+	height: 1000px;
+	margin: auto;
+	width: 600px;
+}
+
+#content-ul{
+	height: 100%;
+	list-style: none;
+}
+
+#content-ul>li{
+	height: 100px;
+}
