@@ -13,7 +13,7 @@ font-family:"microsoft yahei";
 
 
 body{
-	background-color: #999999;
+	background-color: gainsboro;
 }
 
 #index-header{
@@ -23,7 +23,7 @@ body{
 
 #navi-div{
 	height: 140px;
-	background-color:dodgerblue;
+	background-color:dimgray;
 }
 
 #navi-menu{
@@ -56,7 +56,7 @@ body{
 #center-menu>div:hover
 {
 		color: white;
-		background-color: dodgerblue;
+		background-color: dimgray;
 }
 
 #center-menu>div:hover .navi-ul{
@@ -78,10 +78,11 @@ body{
 }
 
 .navi-ul>li{
+	padding: 10px 0;
 	display: block;
 	font-size: 20px;
 	color: white;
-	background-color: dodgerblue;
+	background-color: dimgray;
 }
 
 #content-section{
@@ -98,4 +99,9 @@ body{
 
 #content-ul>li{
 	height: 100px;
+}
+
+.navi-ul>li:hover{
+	color:black;
+	background-color: gainsboro;
 }
