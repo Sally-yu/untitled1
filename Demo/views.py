@@ -14,16 +14,56 @@ from .func import save
 # We're using `django_ajax.middleware.AJAXMiddleware` in settings
 # so we don't need to use `@ajax` and `AJAXMixin` decorators
 
+#JsonResponse without safe
+def CusResponse(data,safeOrNot=False):
+    return JsonResponse(data,safe=safeOrNot)
+
+
+
+#index with news list
 def indexView(request):
     template = loader.get_template('Demo/index.html')
+    datatable=News.objects.all().filter()
+    jsonData=serializers.serialize('json',datatable)
+    print(jsonData)
     context = {
+        'data':json
     }
     return HttpResponse(template.render(context, request))
 
-def foo_view(request):
-    print('GET')
-    return JsonResponse("Get",safe=False)
 
+#news detail view
+def detailView(request):
+    template=loader.get_template('Demo/detail.html')
+    context={}
+    return HttpResponse(template.render(context, request))
+
+
+
+#add new news view
+@login_required
+def addDetailView(request):
+    template=loader.get_template('Demo/addDetail.html')
+    context={}
+    return HttpResponse(template.render(context,request))
+
+
+
+
+#save or cant save
+@login_required
+def saveDetailView(request):
+    if request.method=='POST':
+        jsonData=request.POST;
+        content=jsonData['content']
+        title=jsonData['title']
+        flag=save(content=content,title=title)
+        print(flag)
+        return CusResponse({'result':flag})
+
+
+
+#test
 def post_View(request):
     if request.method=='POST':
         print('POST')
@@ -32,46 +72,21 @@ def post_View(request):
         print(jsonData['password'])
         return JsonResponse('1111111',  safe=False)
 
+
+
+
+#返回保存结果，不跳转
+@login_required
 def savenews_View(request):
     if request.method=='POST':
         print('POST')
         jsonData=request.POST;
         content=jsonData['content']
         title=jsonData['title']
-        flag=save(content=content,title=title)
+        flag=save(content=content,title=title)   #处理保存后的结果
         print(flag)
-        return JsonResponse({'result':flag},safe=False)
+        return CusResponse({'result':flag})
 
-def newslist_View(request):
-    datatable=News.objects.all().filter()
-    jsonData=serializers.serialize('json',datatable)
-    print(jsonData)
-    return JsonResponse(jsonData,safe=False)
 
-def news_View(request):
-    template = loader.get_template('Demo/newslist.html')
-    context = {
-    }
-    return HttpResponse(template.render(context, request))
 
-@ajax
-@login_required
-def login_required_view(request):
-    # if the request.user is anonymous then this view not proceed
-    return {'user_id':request.user.id}
 
-@ajax
-def render_view(request):
-    return render(request,'hello.html')
-
-class SimpleView(TemplateView):
-    template_name='hello.html'
-
-@ajax
-def exception_view(request):
-    a=23/0  # this line throws an exception
-    return a
-
-@ajax
-def raise_exception_view(request):
-    raise Http404
